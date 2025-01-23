@@ -5,7 +5,7 @@ public class Solution {
         Scanner sc = new Scanner(System.in);
         String a = sc.next();
         String b = sc.next();
-        String answer = (a+b).replaceAll(" ","");
+        String answer = a+b;
         System.out.println(answer);
         
     }
