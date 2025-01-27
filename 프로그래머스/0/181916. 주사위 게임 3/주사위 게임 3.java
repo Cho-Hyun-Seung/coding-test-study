@@ -13,9 +13,9 @@ class Solution {
         } 
         // 서로 다른 숫자가 2개인 경우
         else if (int_set.size() == 2) {
-            List<Integer> uniqueNums = new ArrayList<>(int_set);
-            int num1 = uniqueNums.get(0);
-            int num2 = uniqueNums.get(1);
+            List<Integer> set_list = new ArrayList<>(int_set);
+            int num1 = set_list.get(0);
+            int num2 = set_list.get(1);
 
             int count1 = Collections.frequency(num_list, num1);
             int count2 = Collections.frequency(num_list, num2);
