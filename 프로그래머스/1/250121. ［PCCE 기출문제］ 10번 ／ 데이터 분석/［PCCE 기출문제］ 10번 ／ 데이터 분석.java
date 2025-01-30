@@ -23,7 +23,7 @@ class Solution {
             }
         }
         // 2. 데이터 정렬
-        answer.sort(Comparator.comparingInt(a -> a[target_sort_idx]));
+        Collections.sort(answer, (v1, v2) -> v1[target_sort_idx] -v2[target_sort_idx]);
 
         return answer.toArray(new int[answer.size()][]);
     }

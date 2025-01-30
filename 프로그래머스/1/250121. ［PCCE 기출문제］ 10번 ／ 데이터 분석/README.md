@@ -1,10 +1,10 @@
 # [level 1] [PCCE 기출문제] 10번 / 데이터 분석 - 250121 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/250121?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/250121) 
 
 ### 성능 요약
 
-메모리: 75.2 MB, 시간: 3.12 ms
+메모리: 85.2 MB, 시간: 2.15 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 01월 30일 12:38:09
+2025년 01월 30일 12:42:48
 
 ### 문제 설명
 
