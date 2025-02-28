@@ -15,9 +15,9 @@ public class Main{
         // Arrays.stream(arr).sorted().forEach(v -> System.out.println(v));
         Arrays.sort(arr);
         for(int i : arr){
-            sb.append(i + "\n");
+            sb.append(i).append("\n");
         }
-        
-        System.out.println(sb.toString());
+
+        System.out.println(sb);
     }
 }
