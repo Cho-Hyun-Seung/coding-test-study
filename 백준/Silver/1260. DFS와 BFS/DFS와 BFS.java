@@ -20,12 +20,12 @@ public class Main{
             int end = Integer.parseInt(st.nextToken());
             graph[start][end] = graph[end][start] = 1;
         }
-        visited = visited = new boolean[graph.length];
+        visited = new boolean[graph.length];
         visited[V] = true;
         sb.append(V).append(" ");
         dfs(V);
         
-        visited = visited = new boolean[graph.length];
+        visited = new boolean[graph.length];
         visited[V] = true;
         sb.append("\n").append(V).append(" ");
         bfs(V);
