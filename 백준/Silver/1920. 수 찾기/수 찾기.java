@@ -1,26 +1,35 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        Set<Integer> numSet = new HashSet<>();
-
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        while (st.hasMoreTokens()) {
-            numSet.add(Integer.parseInt(st.nextToken()));
-        }
-
-        int m = Integer.parseInt(br.readLine());
-        st = new StringTokenizer(br.readLine());
+public class Main{
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(
+            new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-
-        while (st.hasMoreTokens()) {
-            int num = Integer.parseInt(st.nextToken());
-            sb.append(numSet.contains(num) ? 1 : 0).append("\n");
+        StringTokenizer st;
+        int N = Integer.parseInt(br.readLine());
+        
+        st = new StringTokenizer(br.readLine());
+        
+        HashSet<Integer> set = new HashSet<>();
+        
+        while(st.hasMoreTokens()){
+            set.add(Integer.parseInt(st.nextToken()));
         }
-
-        System.out.println(sb);
+        
+        int M = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
+        
+        while(st.hasMoreTokens()) {
+            if(set.contains(Integer.parseInt(st.nextToken()))){
+                sb.append(1);
+            }else{
+                sb.append(0);
+            }
+            sb.append("\n");
+        }
+        
+        System.out.println(sb.toString());
+        
     }
 }
