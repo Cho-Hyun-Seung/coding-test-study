@@ -50,11 +50,11 @@
 
 <p>이다솜 : 네. 야호!!</p>
 
-<p>'<img alt="" src="https://www.acmicpc.net/upload/201004/p3.PNG" style="height:181px; width:274px"></p>
+<p>'<img alt="" src="" style="height:181px; width:274px"></p>
 
 <p>오영식 : 어? 오박사님 얘는 누구인가요?</p>
 
-<p><img alt="" src="https://www.acmicpc.net/upload/201004/p4.PNG" style="height:182px; width:274px"></p>
+<p><img alt="" src="" style="height:182px; width:274px"></p>
 
 <p>오박사 : 얘는 너의 라이벌이 될 친구 이다솜이라고 하네. 자, 포켓몬을 한 마리 골라보도록 해봐라 다솜아. 레이디퍼스트 네가 먼저 골라봐라.</p>
 
