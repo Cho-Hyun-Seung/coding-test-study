@@ -79,6 +79,7 @@
 |17626. Four Squares|[링크](./%EB%B0%B1%EC%A4%80/Silver/17626.%E2%80%85Four%E2%80%85Squares/Four%E2%80%85Squares.java)|
 |1764. 듣보잡|[링크](./%EB%B0%B1%EC%A4%80/Silver/1764.%E2%80%85%EB%93%A3%EB%B3%B4%EC%9E%A1/%EB%93%A3%EB%B3%B4%EC%9E%A1.java)|
 |18110. solved．ac|[링크](./%EB%B0%B1%EC%A4%80/Silver/18110.%E2%80%85solved%EF%BC%8Eac/solved%EF%BC%8Eac.java)|
+|18352. 특정 거리의 도시 찾기|[링크](./%EB%B0%B1%EC%A4%80/Silver/18352.%E2%80%85%ED%8A%B9%EC%A0%95%E2%80%85%EA%B1%B0%EB%A6%AC%EC%9D%98%E2%80%85%EB%8F%84%EC%8B%9C%E2%80%85%EC%B0%BE%EA%B8%B0/README.md)|
 |1874. 스택 수열|[링크](./%EB%B0%B1%EC%A4%80/Silver/1874.%E2%80%85%EC%8A%A4%ED%83%9D%E2%80%85%EC%88%98%EC%97%B4/README.md)|
 |1920. 수 찾기|[링크](./%EB%B0%B1%EC%A4%80/Silver/1920.%E2%80%85%EC%88%98%E2%80%85%EC%B0%BE%EA%B8%B0/README.md)|
 |1926. 그림|[링크](./%EB%B0%B1%EC%A4%80/Silver/1926.%E2%80%85%EA%B7%B8%EB%A6%BC/%EA%B7%B8%EB%A6%BC.java)|
