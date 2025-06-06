@@ -46,6 +46,7 @@
 |1916. 최소비용 구하기|[링크](./%EB%B0%B1%EC%A4%80/Gold/1916.%E2%80%85%EC%B5%9C%EC%86%8C%EB%B9%84%EC%9A%A9%E2%80%85%EA%B5%AC%ED%95%98%EA%B8%B0/README.md)|
 |2589. 보물섬|[링크](./%EB%B0%B1%EC%A4%80/Gold/2589.%E2%80%85%EB%B3%B4%EB%AC%BC%EC%84%AC/%EB%B3%B4%EB%AC%BC%EC%84%AC.java)|
 |7569. 토마토|[링크](./%EB%B0%B1%EC%A4%80/Gold/7569.%E2%80%85%ED%86%A0%EB%A7%88%ED%86%A0/%ED%86%A0%EB%A7%88%ED%86%A0.java)|
+|7576. 토마토|[링크](./%EB%B0%B1%EC%A4%80/Gold/7576.%E2%80%85%ED%86%A0%EB%A7%88%ED%86%A0/%ED%86%A0%EB%A7%88%ED%86%A0.java)|
 ### 🚀 Silver
 | 문제번호 | 링크 |
 | ----- | ----- |
