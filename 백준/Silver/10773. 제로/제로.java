@@ -2,20 +2,31 @@ import java.util.*;
 import java.io.*;
 
 public class Main{
-    public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private static int K;
+    
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = 
+            new BufferedReader(new InputStreamReader(System.in));
         Stack<Integer> stack = new Stack<>();
-        int testCase = Integer.parseInt(br.readLine());
-        int sum = 0;
         
-        while(testCase-- > 0){
+        K = Integer.parseInt(br.readLine());
+        int result = 0;
+        
+        // 1. 스택 입출력
+        for(int i = 0; i < K; i++){
             int num = Integer.parseInt(br.readLine());
-            if(num == 0) stack.pop();
-            else stack.push(num);
+            if(num == 0 && !stack.isEmpty()){
+                stack.pop();
+            } else {
+                stack.push(num);
+            }
         }
         
-        while(!stack.isEmpty()) sum += stack.pop();
+        // 2. 합 하기
+        while(!stack.isEmpty()){
+            result += stack.pop();
+        }
         
-        System.out.println(sum);
+        System.out.println(result);
     }
 }
