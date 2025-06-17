@@ -5,28 +5,36 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-        int length = Integer.parseInt(br.readLine());
 
         Stack<Integer> stack = new Stack<>();
-        int nextNum = 1; 
+        int n = Integer.parseInt(br.readLine());
+        int cur = 1;
+        boolean possible = true;
 
-        for (int i = 0; i < length; i++) {
-            int targetNum = Integer.parseInt(br.readLine());
+        for (int i = 0; i < n; i++) {
+            int num = Integer.parseInt(br.readLine());
 
-            while (nextNum <= targetNum) {
-                stack.push(nextNum++);
+            // 1. 현재 값이 더 작은 경우
+            while (cur <= num) {
+                stack.push(cur);
                 sb.append("+\n");
+                cur++;
             }
 
-            if (stack.peek() == targetNum) {
+            // 상단 값이 입력 값과 같은 경우
+            if (stack.peek() == num) {
                 stack.pop();
                 sb.append("-\n");
             } else {
-                System.out.println("NO");
-                return;
+                possible = false;
+                break;
             }
         }
 
-        System.out.println(sb);
+        if (possible) {
+            System.out.print(sb.toString());
+        } else {
+            System.out.println("NO");
+        }
     }
 }
