@@ -2,25 +2,31 @@ import java.util.*;
 import java.io.*;
 
 public class Main{
-    public static void main(String[] args) throws IOException {
+    
+    public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int length = Integer.parseInt(br.readLine());
-        HashSet<String> wordSet = new HashSet<>();
         StringBuilder sb = new StringBuilder();
-        //String[] strArr = new String[Integer.parseInt(br.readLine())];
-
-        while(length -- > 0){
-            wordSet.add(br.readLine());
+        Set<String> set = new HashSet<>();
+        
+        int N = Integer.parseInt(br.readLine());
+        
+        while(N -- > 0){
+            set.add(br.readLine());
         }
-
-        wordSet.stream().sorted((a, b)-> {
-            if(a.length() == b.length()){
-                return a.compareTo(b);
+        
+        List<String> list = new ArrayList<>(set);
+        
+        Collections.sort(list, (a, b) -> {
+            if(a.length() != b.length()){
+                return a.length() > b.length() ? 1 : -1;
             }
-            return a.length() - b.length();
-        }).forEach(v -> sb.append(v).append('\n'));
-
-
-        System.out.println(sb);
+            return a.compareTo(b);
+        });
+        
+        for(String str: list){
+            sb.append(str).append("\n");
+        }
+        
+        System.out.println(sb.toString());
     }
 }
