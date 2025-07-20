@@ -2,12 +2,15 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
+    private static List<Long> list;
+    private static int N;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        List<Long> list = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        list = new ArrayList<>();
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
 
         while (list.size() < N) {
             while (st.hasMoreTokens()) {
@@ -23,7 +26,8 @@ public class Main {
         Collections.sort(list);
 
         for (long num : list) {
-            System.out.println(num);
+            sb.append(num).append('\n');
         }
+        System.out.print(sb);
     }
 }
