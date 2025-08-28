@@ -2,23 +2,29 @@ import java.util.*;
 import java.io.*;
 
 public class Main{
-    public static void main(String[] args) throws IOException {
+    private static int N, M;
+    
+    
+    public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
         StringBuilder sb = new StringBuilder();
+        StringTokenizer st = new StringTokenizer(br.readLine());
         
-        int n = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
+        HashMap<String, String> map = new HashMap<>();
         
-        Map<String, String> hashmap = new HashMap<>();
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
         
-        for(int i = 0 ; i < n ; i++){
+        for(int i = 0; i < N; i++){
             st = new StringTokenizer(br.readLine());
-            hashmap.put(st.nextToken(), st.nextToken());
+            String siteURL = st.nextToken();
+            String password = st.nextToken();
+            map.put(siteURL, password);
         }
         
-        for(int i = 0; i < m ; i++){
-            sb.append(hashmap.get(br.readLine())).append("\n");
+        
+        for(int i = 0; i < M; i++){
+            sb.append(map.get(br.readLine())).append("\n");
         }
         
         System.out.println(sb);
