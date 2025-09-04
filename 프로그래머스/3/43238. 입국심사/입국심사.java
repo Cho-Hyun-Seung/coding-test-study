@@ -12,7 +12,7 @@ class Solution {
         
         long left = times[0];
         // 가장 짧은 사람 혼자 다 할 경우
-        long right = times[times.length - 1] * (long)n;
+        long right = times[0] * (long)n;
         
         while(left <= right){
             long mid = (left + right) / 2;
