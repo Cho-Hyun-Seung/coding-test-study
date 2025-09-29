@@ -1,57 +1,72 @@
 import java.util.*;
-import java.util.stream.*;
 
 class Solution {
-    private Map<String, Integer> inMap;
-    private Map<String, Integer> total;
-
+    static HashMap<String, Integer> charge;
+    static HashMap<String, Integer> log;
+    
     public int[] solution(int[] fees, String[] records) {
-        inMap = new HashMap<>();
-        total = new HashMap<>();
-
-        for (String record : records) {
-            String[] parts = record.split(" ");
-            int time = toMinutes(parts[0]);
-            String car = parts[1];
-            String state = parts[2];
-
-            if (state.equals("IN")) {
-                inMap.put(car, time);
-            } else {
-                int inTime = inMap.remove(car);
-                total.put(car, total.getOrDefault(car, 0) + (time - inTime));
+        int[] answer;
+        
+        charge = new HashMap<>();
+        log = new HashMap<>();
+        
+        StringTokenizer st;
+        for(String record: records){
+            st = new StringTokenizer(record);
+            int time = toMinutes(st.nextToken());
+            String carNum = st.nextToken();
+            String status = st.nextToken();
+            
+            // 입차
+            if(status.equals("IN")){
+                // 로그에 추가하기
+                log.put(carNum, time);
+                
+            } else { // 출차
+                // 요금 계산하기
+                int parkingTime = time - log.get(carNum);
+                // 요금 기록에 넣어 주기
+                charge.put(carNum, charge.getOrDefault(carNum, 0) + parkingTime);
+                log.remove(carNum);
             }
         }
-
-        // 내보내기
-        for (String car : new ArrayList<>(inMap.keySet())) {
-            int inTime = inMap.get(car);
-            int time = toMinutes("23:59");
-            total.put(car, total.getOrDefault(car, 0) + (time - inTime));
-            inMap.remove(car);
+        
+        // 안나간 차들 처리해주기
+        List<String> list = new ArrayList<>(log.keySet());
+        int endOfDay = toMinutes("23:59");
+        for (String carNum : new ArrayList<>(log.keySet())) {
+            int parkingTime = endOfDay - log.get(carNum);
+            charge.put(carNum, charge.getOrDefault(carNum, 0) + parkingTime);
         }
-
-        // 차량 번호 오름차순으로 요금 계산
-        List<String> cars = total.keySet().stream().sorted().collect(Collectors.toList());
-        int[] answer = new int[cars.size()];
-        for (int i = 0; i < cars.size(); i++) {
-            answer[i] = calcFee(total.get(cars.get(i)), fees);
+        
+        List<String> carList = new ArrayList<>(charge.keySet());
+        Collections.sort(carList);
+        
+        answer = new int[carList.size()];
+        for(int i = 0; i < answer.length; i++){
+            int totalMinutes = charge.get(carList.get(i));
+            answer[i] = calculateFee(totalMinutes, fees);
         }
+        
         return answer;
     }
-
-    private int calcFee(int totalMinutes, int[] fees) {
-        int baseTime = fees[0], baseFee = fees[1], unitTime = fees[2], unitFee = fees[3];
-        if (totalMinutes <= baseTime) return baseFee;
-        int extra = totalMinutes - baseTime;
-        int units = (int) Math.ceil((double) extra / unitTime);
-        return baseFee + units * unitFee;
+    
+    public int calculateFee(int time, int[] fees){
+        // 기본 시간에 포함되는 경우
+        if(time <= fees[0]){
+            return fees[1];
+        } else {
+            // 초과 요금 = 초과 시간/단위시간 (올림) * 초과 분당 요금
+            int over = (int)Math.ceil((time - fees[0])/ (double)fees[2]);
+            return fees[1] + over * fees[3];
+        }
     }
-
-    private int toMinutes(String time) {
-        String[] arr = time.split(":");
-        int hour = Integer.parseInt(arr[0]);
-        int min = Integer.parseInt(arr[1]);
-        return hour * 60 + min;
+    
+    
+    // 시각을 분으로 바꾸는 함수
+    public int toMinutes(String time){
+        String[] timeArr = time.split(":");
+        
+        return Integer.parseInt(timeArr[0]) * 60 + Integer.parseInt(timeArr[1]);
     }
 }
