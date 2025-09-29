@@ -41,6 +41,7 @@
 | 문제번호 | 링크 |
 | ----- | ----- |
 |10026. 적록색약|[링크](./%EB%B0%B1%EC%A4%80/Gold/10026.%E2%80%85%EC%A0%81%EB%A1%9D%EC%83%89%EC%95%BD/README.md)|
+|1043. 거짓말|[링크](./%EB%B0%B1%EC%A4%80/Gold/1043.%E2%80%85%EA%B1%B0%EC%A7%93%EB%A7%90/%EA%B1%B0%EC%A7%93%EB%A7%90.java)|
 |1068. 트리|[링크](./%EB%B0%B1%EC%A4%80/Gold/1068.%E2%80%85%ED%8A%B8%EB%A6%AC/%ED%8A%B8%EB%A6%AC.java)|
 |11559. Puyo Puyo|[링크](./%EB%B0%B1%EC%A4%80/Gold/11559.%E2%80%85Puyo%E2%80%85Puyo/README.md)|
 |12865. 평범한 배낭|[링크](./%EB%B0%B1%EC%A4%80/Gold/12865.%E2%80%85%ED%8F%89%EB%B2%94%ED%95%9C%E2%80%85%EB%B0%B0%EB%82%AD/README.md)|
