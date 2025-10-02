@@ -1,80 +1,85 @@
+import java.util.*;
+
 class Solution {
-    private int maxDiff = 0;
-    private int[] info;
-    private int[] maxAnswer = null;
+    static int[] ryan = new int[11];
+    static int[] info;
+    static int[] best;
+    static int gap = 0;
     
     public int[] solution(int n, int[] info) {
-        int[] answer;
+        int[] answer = {};
         
         this.info = info;
-        answer = new int[11];
         
-        bt(0, n, answer);
-        if (maxAnswer == null) return new int[]{-1};
-        return maxAnswer;
+        getScore(10, n);
+        
+        if(gap == 0) return new int[]{-1};
+        
+        return best;
     }
     
-    private void bt(int idx, int n, int[] answer){
-        // 화살을 다 쓰거나 끝에 도달한 경우
-        if(idx == 11 || n == 0){
-            // 화살 남으면 0점에 꽃아서 동점인 경우 계산하기
-            if(n > 0) answer[10] += n;
+    public void print(int rScore, int aScore){
+        for(int i = 0; i <= 10; i++){
+            System.out.print(ryan[i] + " ");
+        }
+        System.out.print("r : " + rScore + " a : " + aScore);
+        System.out.println();
+    }
+    
+    public void getScore(int score, int arrow){
+        // 종료 조건
+        if(arrow == 0 || score == 0){
+            // 화살 0에 다 넣기
+            if(arrow > 0) ryan[10] += arrow;
             
-            int diff = calculateDiff(answer);
-            
-            if(diff > 0){
-                if(diff > maxDiff){
-                    maxDiff = diff;
-                    maxAnswer = answer.clone();
-                } else if(diff == maxDiff){
-                    if(samePoint(answer)){
-                        maxAnswer = answer.clone();
-                    }
-                }
-            }
-            
-            if (n > 0) answer[10] -= n;
+            // 점수 계산하기
+            calc();
+            if(arrow > 0) ryan[10] -= arrow;
             return;
         }
         
-        // 점수 가져가는 경우
-        int shoot = info[idx] + 1;
-        if(n >= shoot){
-            answer[idx] = shoot;
-            bt(idx + 1, n - shoot, answer);
-            answer[idx] = 0;
+        // 이번 라운드에 점수를 가져가는 경우
+        int need = info[10 - score] + 1;
+        if(arrow >= need){
+            ryan[10 - score] += need;
+            getScore(score - 1, arrow - need);
+            ryan[10 - score] -= need;
         }
         
-        // 안 가져가는 경우
-        bt(idx + 1, n, answer);
-    }
-    
-    private boolean samePoint(int[] answer){
-        for(int i = 10; i >= 0; i--){
-            if(answer[i] != maxAnswer[i]){
-                return answer[i] > maxAnswer[i];
-            }
-        }
+        // 이번 라운드 점수를 스킵하는 경우
+        getScore(score - 1, arrow);
         
-        return false;
+        
+        // 이번 라운드는 넘어가는 경우
     }
     
-    private int calculateDiff(int[] answer){
-        int apeach = 0;
-        int lion = 0;
+    public void calc(){
+        int rScore = 0;
+        int aScore = 0;
         
         for(int i = 0; i <= 10; i++){
-            int score = 10 - i;
-            
-            if(answer[i] == 0 && info[i] == 0) continue;
-            
-            if(answer[i] > info[i]){
-                lion += score;
+            if(info[i] == 0 && ryan[i] == 0) continue;
+            if(info[i] >= ryan[i]){
+                aScore += 10 - i;
             } else{
-                apeach += score;
+                rScore += 10 - i;
             }
         }
         
-        return lion - apeach;
+        int curGap = rScore - aScore;
+        
+        if(curGap > gap) {
+            gap = curGap;
+            best = ryan.clone();
+        } else if(gap > 0 && curGap == gap) {
+            for(int i = 10; i >= 0; i--){
+                // 낮은 점수를 더 많이 맞춘 경우
+                if (best[i] == ryan[i]) continue;
+                if (ryan[i] > best[i]) {
+                    best = ryan.clone();
+                } 
+                break;
+            }
+        }
     }
 }
