@@ -1,58 +1,38 @@
-import java.util.*;
-/*
-    - 일렬로 나열된 n개의 집에 택배 배달
-    - i번째 집은 거리가 i만큼 떨어짐
-    - 트럭에 cap개 실을 수 있음
-    - 각 집에 배달, 수거할 때, 원하는 개수만큼 배달 수거 가능
-    
-    return 트럭 하나로 모든 배달, 수거를 마치고 물류창고까지 돌아올 수 있는 최소 이동 거리
-*/
 class Solution {
-    static int n;
     public long solution(int cap, int n, int[] deliveries, int[] pickups) {
-        long answer = 0;
-        
-        this.n = n;
-        
-        int go = n - 1;
-        int back = n - 1;
-        
-        
-        // 갈때는 배달만하고, 올 때 수거?
+        long answer = 0L;
+
+        int dIdx = n - 1;
+        int pIdx = n - 1;
+
         while (true) {
-            while (go >= 0 && deliveries[go] == 0) go--;
-            while (back >= 0 && pickups[back] == 0) back--;
+            while (dIdx >= 0 && deliveries[dIdx] == 0) dIdx--;
+            while (pIdx >= 0 && pickups[pIdx] == 0) pIdx--;
 
-            if (go < 0 && back < 0) break;
-            int length = Math.max(go, back) + 1;
-            answer += length * 2L;
-            
-            int cur = cap;
-            while (go >= 0 && cur > 0) {
-                if (deliveries[go] == 0) { go--; continue; }
-                int take = Math.min(cur, deliveries[go]);
-                deliveries[go] -= take;
-                cur -= take;
-                if (deliveries[go] == 0) go--;
+            if (dIdx < 0 && pIdx < 0) break;
+
+            int dist = Math.max(dIdx, pIdx) + 1;
+            answer += (long) dist * 2;
+
+            int dStore = cap;
+            while (dStore > 0 && dIdx >= 0) {
+                if (deliveries[dIdx] == 0) { dIdx--; continue; }
+                int take = Math.min(deliveries[dIdx], dStore);
+                deliveries[dIdx] -= take;
+                dStore -= take;
+                if (deliveries[dIdx] == 0) dIdx--;
             }
 
-            // 수거 처리
-            cur = cap;
-            while (back >= 0 && cur > 0) {
-                if (pickups[back] == 0){
-                    back -= 1;
-                    continue; 
-                }
-                
-                int take = Math.min(cur, pickups[back]);
-                pickups[back] -= take;
-                cur -= take;
-                
-                if (pickups[back] == 0) back--;
+            int pStore = cap;
+            while (pStore > 0 && pIdx >= 0) {
+                if (pickups[pIdx] == 0) { pIdx--; continue; }
+                int take = Math.min(pickups[pIdx], pStore);
+                pickups[pIdx] -= take;
+                pStore -= take;
+                if (pickups[pIdx] == 0) pIdx--;
             }
-            
         }
-        
+
         return answer;
     }
 }
