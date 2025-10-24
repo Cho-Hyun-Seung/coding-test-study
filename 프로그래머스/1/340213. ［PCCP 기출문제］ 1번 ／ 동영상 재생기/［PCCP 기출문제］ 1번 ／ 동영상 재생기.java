@@ -17,10 +17,11 @@ class Solution {
         int opStartSec = toSec(op_start);
         int opEndSec = toSec(op_end);
         
+        if(cur >= opStartSec && cur <= opEndSec){
+            cur = opEndSec;
+        }
+        
         for(String c : commands){
-            if(cur >= opStartSec && cur <= opEndSec){
-                cur = opEndSec;
-            }
             
             if(c.equals("next")){
                 if(cur + 10 <= videoSec){   // 비디오 길이 이하
