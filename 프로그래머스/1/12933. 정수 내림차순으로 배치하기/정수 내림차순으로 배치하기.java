@@ -2,16 +2,13 @@ import java.util.*;
 
 class Solution {
     public long solution(long n) {
+        String[] arr = String.valueOf(n).split("");
         long answer = 0;
-        int[] arr = Arrays.stream((n + "").split(""))
-            .sorted()
-            .mapToInt(Integer::parseInt)
-            .toArray();
         
+        Arrays.sort(arr);
         for(int i = 0; i < arr.length; i++){
-            answer += arr[i] * Math.pow(10,i);
+            answer += Integer.parseInt(arr[i]) * Math.pow(10,i);
         }
-        
         return answer;
     }
 }
