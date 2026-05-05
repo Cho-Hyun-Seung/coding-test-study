@@ -1,11 +1,11 @@
+import java.util.*;
+
 class Solution {
     public long solution(long n) {
-        long answer = -1;
-        long sqrtValue = (long) Math.sqrt(n);
+        long answer = 0;
         
-        if(sqrtValue * sqrtValue == n){
-            answer = (sqrtValue + 1) * (sqrtValue + 1);
-        }
+        if(Math.sqrt(n) ==  (int)Math.sqrt(n)) answer = (long) Math.pow(Math.sqrt(n) + 1, 2);
+        else answer = -1;
         
         return answer;
     }
