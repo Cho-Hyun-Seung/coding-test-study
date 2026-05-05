@@ -1,12 +1,15 @@
+import java.util.*;
+
 class Solution {
     public int[] solution(long n) {
-        String str = n + "";
+        String s = String.valueOf(n);
+        int size = s.length();
+        int[] answer = new int[size];
         
-        int[] answer =  new int[str.length()];
-        
-        for(int i = 0; i < str.length(); i++){
-            answer[str.length() - 1 - i] = str.charAt(i) - '0';
+        for(int i = 0; i < size; i++){
+            answer[i] = s.charAt(size -1 - i) - '0';
         }
+        
         return answer;
     }
 }
