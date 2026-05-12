@@ -1,21 +1,27 @@
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
 
 class Solution {
     public int[] solution(int[] arr) {
-        int[] answer;
-        
-        List<Integer> list = Arrays.stream(arr)
-            .boxed()
-            .collect(Collectors.toList());
-        
-        list.remove(Collections.min(list));
-        
-        
-        answer = list.size() == 0
-            ? new int[]{-1}
-            : list.stream().mapToInt(v -> v).toArray();
-        
-        return answer;
+        if (arr.length == 1) {
+            return new int[]{-1};
+        }
+
+        int min = findMin(arr);
+
+        return Arrays.stream(arr)
+                .filter(v -> v != min)
+                .toArray();
+    }
+
+    public int findMin(int[] arr) {
+        int min = Integer.MAX_VALUE;
+
+        for (int num : arr) {
+            if (min > num) {
+                min = num;
+            }
+        }
+
+        return min;
     }
 }
