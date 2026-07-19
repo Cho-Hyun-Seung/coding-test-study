@@ -1,50 +1,44 @@
-import java.util.Arrays;
+import java.util.*;
 
 class Solution {
-    public int[] solution(int N, int[] stages) {
-        // 1. 스테이지별 도전자 수 기록
-        int[] challengers = new int[N + 2];
-
-        for (int stage : stages) {
-            challengers[stage]++;
+    public int[] solution(int N, int[] stages) {        
+        // 1. 스테이지별 도전자 수
+        int[] challenger = new int[N + 2];
+        
+        for(int stage: stages){
+            challenger[stage] += 1;
         }
-
-        // 현재 스테이지에 도달한 사용자 수
-        int rest = stages.length;
-        double[] fail = new double[N + 1];
-
+        
         // 2. 실패율 계산
-        for (int stage = 1; stage <= N; stage++) {
-            if (rest == 0) {
-                fail[stage] = 0;
+        double[] failure = new double[N + 1];
+        int rest = stages.length;
+        for(int i = 1; i <= N; i++){
+            if(rest == 0){
+                failure[i] = 0;
             } else {
-                fail[stage] = (double) challengers[stage] / rest;
+                failure[i] = (double) challenger[i] / rest; 
             }
-
-            // 현재 스테이지에서 실패한 사용자는 다음 스테이지에 도달하지 못함
-            rest -= challengers[stage];
+            
+            rest -= challenger[i];
         }
-
-        // Comparator를 사용하기 위해 Integer[] 사용
-        Integer[] stageNumbers = new Integer[N];
-
-        for (int i = 0; i < N; i++) {
-            stageNumbers[i] = i + 1;
+        
+        // 3. 스테이지 정렬
+        Integer[] answer = new Integer[N];
+        for(int i = 0; i < N; i++){
+            answer[i] = i + 1;
         }
-
-        // 3. 실패율 내림차순, 같으면 스테이지 번호 오름차순
-        Arrays.sort(stageNumbers, (a, b) -> {
-            int result = Double.compare(fail[b], fail[a]);
-
-            if (result == 0) {
-                return Integer.compare(a, b);
-            }
-
-            return result;
+        
+        Arrays.sort(answer, (a, b) -> {
+            // 실패율이 같은 경우, 내림차순
+            int compare = Double.compare(failure[b], failure[a]);
+            
+            if(compare == 0) return Integer.compare(a, b);
+            
+            return compare;
         });
-
-        return Arrays.stream(stageNumbers)
-                .mapToInt(Integer::intValue)
-                .toArray();
+        
+        return Arrays.stream(answer)
+            .mapToInt(Integer::intValue)
+            .toArray();
     }
 }
