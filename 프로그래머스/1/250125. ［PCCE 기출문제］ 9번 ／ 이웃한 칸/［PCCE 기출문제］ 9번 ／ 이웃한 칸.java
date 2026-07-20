@@ -1,26 +1,23 @@
-import java.util.*;
-
 class Solution {
+    private static int[] dx = {0, 1, -1 ,0};
+    private static int[] dy = {1, 0, 0, -1};
+    
     public int solution(String[][] board, int h, int w) {
-        int n = board.length;
-        
+        int answer = 0;
+        int N = board.length;
         int count = 0;
-        int[] dh = {0, -1, 1 ,0};
-        int[] dw = {1, 0, 0, -1};
-        for(int i = 0; i < 4; i++){
-            int h_check = h + dh[i];
-            int w_check = w + dw[i];
-            
-            if(valid(h_check, w_check, n) && board[h_check][w_check].equals(board[h][w])){
-                count += 1;
+        String color = board[h][w];
+        
+        for(int i = 0; i < 4; i++) {
+            int nx = dx[i] + h;
+            int ny = dy[i] + w;
+            if(nx < N && nx >= 0 && ny < N && ny >= 0){
+                if(board[nx][ny].equals(color)){
+                    count += 1;
+                }
             }
-            
         }
         
         return count;
-    }
-    
-    public boolean valid(int h, int w, int n){
-        return h >= 0 && h < n && w >= 0 && w < n;
     }
 }
